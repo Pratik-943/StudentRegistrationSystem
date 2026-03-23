@@ -1,0 +1,120 @@
+<%@ Master Language="C#"
+    AutoEventWireup="true"
+    CodeBehind="Site.Master.cs"
+    Inherits="StudentRegistrationSystem.Presentation_Layer.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Student Registration System</title>
+
+    <!-- Google Fonts for Clean, Elegant feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="../Scripts/script.js"></script>
+
+    <link href="../Style/dashboard.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<form runat="server">
+
+    <!-- ELEGANT HEADER -->
+    <div class="elegant-header">
+        <div class="header-container">
+            
+            <a href="~/Presentation Layer/Home.aspx" class="brand-logo" runat="server">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Student Registration
+            </a>
+
+            <!-- NAVIGATION -->
+            <div class="nav-menu">
+                <asp:Menu ID="Menu1"
+                          runat="server"
+                          Orientation="Horizontal"
+                          IncludeStyleBlock="false"
+                          RenderingMode="List"
+                          CssClass="d-flex m-0 p-0"
+                          StaticMenuStyle-CssClass="nav-menu list-unstyled m-0 p-0">
+                    <Items>
+                        <asp:MenuItem Text="Home" NavigateUrl="~/Presentation Layer/Home.aspx" />
+                        <asp:MenuItem Text="Signup" NavigateUrl="~/Presentation Layer/Signup.aspx" />
+                        <asp:MenuItem Text="Login" NavigateUrl="~/Presentation Layer/Login.aspx" />
+                        <asp:MenuItem Text="Registration" NavigateUrl="~/Presentation Layer/StudentRegistration.aspx" />
+                        <asp:MenuItem Text="Logout" NavigateUrl="~/Presentation Layer/Logout.aspx" />
+                    </Items>
+                </asp:Menu>
+            </div>
+
+            <!-- SEARCH & PROFILE (MOCKUP VISUALS) -->
+            <div class="header-actions">
+                <div class="search-bar">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search" />
+                </div>
+                <div style="color: var(--text-muted); cursor: pointer;">
+                    <i class="fa-regular fa-bell"></i>
+                </div>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff" alt="User Profile" />
+                    <asp:Label ID="lblUser" runat="server" Text="User"></asp:Label>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; color: var(--text-muted);"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <div class="content-card">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+
+</form>
+
+<!-- Include script to auto-style internal elements -->
+<script>
+    // Highlight the active navigation link based on current URL path
+    document.addEventListener("DOMContentLoaded", function () {
+        var currentPath = window.location.pathname.toLowerCase();
+        if (currentPath === "/" || currentPath === "") {
+            currentPath = "/presentation layer/home.aspx";
+        }
+
+        var navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(function(link) {
+            var linkPath = link.pathname.toLowerCase();
+            
+            // Skip the Logout option
+            if (linkPath.includes("logout")) return;
+
+            // Highlight if paths match
+            if (currentPath.includes(linkPath) || linkPath.includes(currentPath)) {
+                link.classList.add('active-link');
+            }
+        });
+    });
+
+    // Apply elegant form styling to all generic inputs
+    const inputs = document.querySelectorAll('input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]), select, textarea');
+    inputs.forEach(input => {
+        input.classList.add('form-control');
+    });
+
+    const buttons = document.querySelectorAll('input[type="submit"], input[type="button"], button');
+    buttons.forEach(btn => {
+        if (!btn.classList.contains('btn') && !btn.closest('.search-bar') && !btn.closest('.header-actions')) {
+            btn.classList.add('btn', 'btn-primary', 'mt-3');
+        }
+    });
+</script>
+
+</body>
+</html>

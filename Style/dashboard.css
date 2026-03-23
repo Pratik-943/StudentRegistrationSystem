@@ -1,0 +1,233 @@
+        :root {
+            --primary-bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --accent-green: #0f8b65;
+            --accent-dark-blue: #0f172a;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation Header */
+        .elegant-header {
+            background-color: #ffffff;
+            padding: 0 30px;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-dark-blue);
+            text-decoration: none;
+        }
+
+        .brand-logo i {
+            color: var(--accent-dark-blue);
+            font-size: 1.4rem;
+        }
+
+        /* Navigation Menu Override */
+        .nav-menu {
+            display: flex;
+            gap: 5px;
+            height: 70px;
+        }
+        
+        .nav-menu a {
+            color: var(--text-dark) !important;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0 16px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-dark-blue) !important;
+            background-color: #f8fafc;
+        }
+
+        /* Dynamic active state */
+        .nav-menu a.active-link {
+            font-weight: 600;
+            color: var(--accent-dark-blue) !important;
+        }
+        .nav-menu a.active-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            right: 10px;
+            height: 3px;
+            background-color: var(--accent-dark-blue);
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        /* Search & User Profile Area */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-bar {
+            background-color: #f1f5f9;
+            border-radius: 20px;
+            padding: 6px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 150px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .user-profile img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Container & Cards */
+        .main-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 30px;
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Form Inputs Elegant Style */
+        .form-control {
+            background: #ffffff !important;
+            border: 1px solid var(--border-color) !important;
+            color: var(--text-dark) !important;
+            border-radius: 8px;
+            padding: 10px 15px;
+            transition: all 0.2s;
+            box-shadow: none !important;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-green) !important;
+            box-shadow: 0 0 0 3px rgba(15, 139, 101, 0.1) !important;
+        }
+
+        /* Buttons Elegant Style */
+        .btn {
+            border-radius: 8px;
+            font-weight: 500;
+            padding: 8px 20px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary, .btn-success {
+            background-color: var(--accent-green) !important;
+            color: #ffffff !important;
+            border: none !important;
+            box-shadow: 0 2px 4px rgba(15, 139, 101, 0.2);
+        }
+        
+        .btn-primary:hover, .btn-success:hover {
+            background-color: #0d7a58 !important;
+            box-shadow: 0 4px 6px rgba(15, 139, 101, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: #ffffff !important;
+            color: var(--text-dark) !important;
+            border: 1px solid var(--border-color) !important;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f8fafc !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        /* Labels and Text */
+        label {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+
+        h2, h3, h4 {
+            color: var(--accent-dark-blue);
+            font-weight: 600;
+        }
+
+        /* Table Styling */
+        .table {
+            color: var(--text-dark);
+        }
+        .table thead th {
+            border-bottom: 2px solid var(--border-color);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+        .table tbody td {
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
